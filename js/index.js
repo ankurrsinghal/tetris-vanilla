@@ -34,6 +34,11 @@ const POINT_SIZE = 25
 const ROWS = GRID_HEIGHT / POINT_SIZE
 const COLUMNS = GRID_WIDTH / POINT_SIZE
 
+const main = document.getElementById('main')
+
+main.style.width = GRID_WIDTH + 'px'
+main.style.height = GRID_HEIGHT + 'px'
+
 const canvas = document.getElementById('canvas')
 canvas.width = GRID_WIDTH
 canvas.height = GRID_HEIGHT
@@ -767,7 +772,7 @@ const restartGame = () => {
     setState({
         shape: randomNewShape(),
         y: 0,
-        x: COLUMNS / 2 - 1,
+        x: COLUMNS / 2,
         color: randomColor()
     })
 }

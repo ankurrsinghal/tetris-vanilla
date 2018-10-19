@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        body {
-            margin: 0;
-        }
-
-        #canvas {
-            border-right: 1px solid #333;
-            border-bottom: 1px solid #333;
-        }
-    </style>
+    <title>Vanilla Tetris</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-
-    <canvas id="canvas"></canvas>
-    <button id="togglePlay">Pause</button>
-    <button id="restart">Restart</button>
-    <span id="score">0</span>
 <body>
-    <script src="/src/index.js"></script>
+    <div id="main">
+        <div id="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div class="game-details">
+            <button class="game-action" id="togglePlay">Pause</button>
+            <div id="score">
+                0
+            </div>
+            <button class="game-action" id="restart">Restart</button>
+        </div>
+    </div>
+    <script src="/js/index.js"></script>
 </body>
 </html>

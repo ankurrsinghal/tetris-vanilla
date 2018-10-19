@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    font-family: Avenir, sans-serif;
+}
+
+#main {
+    position: relative;
+    margin: 1em auto;
+}
+
+#canvas {
+    border: 1px solid #333;
+}
+
+button {
+    outline: none;
+    background: none;
+    border: none;
+}
+
+.game-action {
+    padding: 1em 1.5rem;
+    font-size: 16px;
+    background: #000000;
+    color: #fafafa;
+    cursor: pointer;
+    font-family: Avenir, sans-serif;
+}
+
+.game-details {
+    display: flex;
+}
+
+#score {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fafafa;
+    font-size: 30px;
+    font-weight: 900;
+}
