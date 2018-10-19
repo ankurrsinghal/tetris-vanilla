@@ -807,18 +807,23 @@ const Tap = new Hammer.Tap({
 touchManager.add(Swipe)
 touchManager.add(Tap)
 
+const moduls = val => val > 0 ? -(val) : val
+
 touchManager.on('swipe', e => {
     const { deltaY, deltaX } = e
 
-    if (deltaX > 0) {
-        moveShapeRight()
-    } else if (deltaX < 0) {
-        moveShapeLeft()
+    if (moduls(deltaY) > moduls(deltaX)) {
+        if (deltaY > 0) {
+            moveShapeDown()
+        }
+    } else {
+        if (deltaX > 0) {
+            moveShapeRight()
+        } else if (deltaX < 0) {
+            moveShapeLeft()
+        }
     }
 
-    if (deltaY > 0) {
-        moveShapeDown()
-    }
 })
 
 touchManager.on('tap', e => {
