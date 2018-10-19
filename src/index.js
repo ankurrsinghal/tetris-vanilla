@@ -739,7 +739,7 @@ const tick = () => {
     }
     reqAnimId = window.requestAnimationFrame(tick)
 }
-// tick()
+tick()
 
 const togglePlay = document.getElementById('togglePlay')
 togglePlay.addEventListener('click', () => {
