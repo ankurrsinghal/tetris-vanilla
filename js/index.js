@@ -569,36 +569,52 @@ const drawMatrix = () => {
 window.addEventListener('keydown', e => {
     if (e.keyCode === 38) {
         e.preventDefault()
-        setState({
-            shape: {
-                type: state.shape.type,
-                orientation: (state.shape.orientation + 1) % L_ORIENTATIONS.length
-            }
-        })
+        rotateShape()
     } else if (e.keyCode === 40) {
         e.preventDefault()
-        setState({
-            y: state.y + 1
-        })
+        moveShapeDown()
     } else if (e.keyCode === 39) {
         e.preventDefault()
-        setState({
-            x: state.x + 1
-        })
+        moveShapeRight()
     } else if (e.keyCode === 37) {
         e.preventDefault()
-        setState({
-            x: state.x - 1
-        })
+        moveShapeLeft()
     } else if (e.keyCode === 32) {
-        e.preventDefault()
-        const y = calculateHighestYValue()
-        console.log(y)
-        setState({
-            y
-        })
+        // e.preventDefault()
+        // const y = calculateHighestYValue()
+        // console.log(y)
+        // setState({
+        //     y
+        // })
     }
 })
+
+const rotateShape = () => {
+    setState({
+        shape: {
+            type: state.shape.type,
+            orientation: (state.shape.orientation + 1) % L_ORIENTATIONS.length
+        }
+    })
+}
+
+const moveShapeDown = () => {
+    setState({
+        y: state.y + 1
+    })
+}
+
+const moveShapeLeft = () => {
+    setState({
+        x: state.x - 1
+    })
+}
+
+const moveShapeRight = () => {
+    setState({
+        x: state.x + 1
+    })
+}
 
 const calculateHighestYValue = () => {
     const orientation = currentOrientationFromState(state)
@@ -780,3 +796,31 @@ const restartGame = () => {
 const clearAll = () => {
     context.clearRect(0, 0, GRID_WIDTH, GRID_HEIGHT)
 }
+
+
+const touchManager = new Hammer.Manager(canvas)
+const Swipe = new Hammer.Swipe()
+const Tap = new Hammer.Tap({
+    taps: 1
+})
+
+touchManager.add(Swipe)
+touchManager.add(Tap)
+
+touchManager.on('swipe', e => {
+    const { deltaY, deltaX } = e
+
+    if (deltaX > 0) {
+        moveShapeRight()
+    } else if (deltaX < 0) {
+        moveShapeLeft()
+    }
+
+    if (deltaY > 0) {
+        moveShapeDown()
+    }
+})
+
+touchManager.on('tap', e => {
+    rotateShape()
+})

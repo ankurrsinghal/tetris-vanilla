@@ -6,6 +6,7 @@ body {
 #main {
     position: relative;
     margin: 1em auto;
+    /* max-height: 100vh; */
 }
 
 #canvas {
